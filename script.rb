@@ -5,14 +5,16 @@
 # returns largest possible value representing second integer - first integer
 require 'pry-byebug'
 def stock_picker(array)
-
+profit_array = []
   array.each_with_index do |value, index|
+    current_price = array[index].to_i 
+
     until index >= array.length do
-      current_price = array[index] 
-      future_price = array[index + 1]
-      binding.pry
-    
+      index += 1
+      profit = array[index].to_i - current_price
+      profit_array.push(profit)
     end
 end
+p profit_array
 end
 stock_picker([17,3,6,9,15,8,6,1,10])
