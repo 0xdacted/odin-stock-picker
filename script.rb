@@ -2,7 +2,7 @@
 # It should return a pair of days representing the best day to buy and the best day to sell. Days start at 0.
 
 # takes input array of integers. For each integer, check the value of every integer with an index larger than it - original integer. 
-# returns largest possible value representing second integer - first integer
+# returns index positions of values that create largest possible value representing second integer - first integer
 require 'pry-byebug'
 def stock_picker(array)
 profit_array = []
@@ -15,6 +15,7 @@ profit_array = []
       profit_array.push(profit)
     end
 end
-p profit_array
+largest_profit = profit_array.reduce {|a, b| a > b ? a : b }
+p largest_profit
 end
-stock_picker([17,3,6,9,15,8,6,1,10])
+stock_picker([17,3,6,9,15,8,6,1,10]) 
