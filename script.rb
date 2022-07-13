@@ -6,16 +6,20 @@
 require 'pry-byebug'
 def stock_picker(array)
 profit_array = []
+
   array.each_with_index do |value, index|
     current_price = array[index].to_i 
+    original_index = index
 
     until index >= array.length do
       index += 1
       profit = array[index].to_i - current_price
-      profit_array.push(profit)
+      profit_array.push(profit: profit, index1: original_index, index2: index)
+    
     end
 end
-largest_profit = profit_array.reduce {|a, b| a > b ? a : b }
-p largest_profit
+ sorted = profit_array.sort_by {|profit| [profit[:profit]]}
+
+p sorted[-1]
 end
 stock_picker([17,3,6,9,15,8,6,1,10]) 
